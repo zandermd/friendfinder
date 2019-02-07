@@ -1,4 +1,4 @@
-const path = require('path')
+var path = require('path')
 
 module.exports = function (app) {
   app.get('/survey', function (req, res) {
@@ -12,7 +12,7 @@ module.exports = function (app) {
 
 
   //A route will match any path that follows its path immediately with a “/”.
-  // app.use(function (req, res) {
-  //   res.sendFile(path.join(__dirname + '/../public/home.html'));
-  // });
+  app.use(function (req, res) {
+    res.sendFile(path.join(__dirname + '/../public/home.html'));
+  });
 };
