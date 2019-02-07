@@ -4,8 +4,8 @@ var path = require('path');
 var fs = require('fs');
 
 var app = express();
-var PORT = process.env.port || 8000;
-// var PORT = 3000;
+// var PORT = process.env.port || 8000;
+var PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
