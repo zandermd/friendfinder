@@ -11,11 +11,8 @@ module.exports = function (app) {
 
 
     app.post('/api/friends', function (req, res) {
-        // set up user variable from the request body object
         let user = req.body;
-
-        let userAnswers = buildAnswersArray(user)
-
+        userAnswers = buildAnswersArray(user)
         let friendData = {
             name: user['name'],
             photo: user['photo'],
@@ -24,13 +21,11 @@ module.exports = function (app) {
 
         listOfFriends.push(friendData)
         newList = JSON.stringify(listOfFriends);
-        match = findMatches(listOfFriends, userAnswers);
+        findMatches(listOfFriends, userAnswers);
 
         fs.writeFileSync(__dirname + '/../data/friends.json', newList);
         res.json(JSON.stringify(match));
     })
-
-
 }
 
 var buildAnswersArray = (answers) => {
@@ -45,7 +40,7 @@ var findMatches = (listofFriends, userAnswers) => {
             matchDifference += Math.abs(answer - userAnswers[idx]);
         })
 
-        if (totalDifference < matchDifference || totalDifference === null) {
+        if(totalDifference < matchDifference || totalDifference === null) {
             match = friend;
             totalDifference = matchDifference;
         }
